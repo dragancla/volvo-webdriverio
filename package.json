@@ -11,7 +11,8 @@
   "author": "Anton Dragan <contact@antondragan.com> (https://antondragan.com/)",
   "private": true,
   "scripts": {
-    "test": "npx wdio run ./wdio.conf.js"
+    "test": "npx wdio run ./local.conf.js",
+    "test:ci": "npx wdio run ./ci.conf.js"
   },
   "devDependencies": {
     "@wdio/cli": "^7.25.1",
@@ -19,6 +20,7 @@
     "@wdio/mocha-framework": "^7.25.1",
     "@wdio/spec-reporter": "^7.25.1",
     "chromedriver": "^106.0.1",
-    "wdio-chromedriver-service": "^8.0.0"
+    "wdio-chromedriver-service": "^8.0.0",
+    "wdio-timeline-reporter": "^5.1.4"
   }
 }
