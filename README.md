@@ -14,8 +14,8 @@ We'll explain these one step at a time below.
 - We will keep page objects and components in the `./structure` folder and tests in the `./tests` folder. 
 - There is a single webpage that we need to test, `https://www.volvocars.com/intl/v/car-safety/a-million-more`, so we will hardcode it as the BASE_URL process.env variable. 
 - This webpage will have 1 page and 3 components: footer, header and cookie modal. We will therefore create 4 simple tests, one for each of the components.
-- ![Tests](./screenshots/tests.jpg)
-- ![Components](./screenshots/components.jpg)
+- ![Tests](./screenshots/tests.png)
+- ![Components](./screenshots/components.png)
 
 ### Dockerization 
 
@@ -115,7 +115,7 @@ exports.config = {
 ```
 
 Here's a preview of the HTML report this creates:
-- ![WDIO Timeline Service report](./screenshots/reporter.jpg)
+- ![WDIO Timeline Service report](./screenshots/reporter.png)
 
 ## Documentation
 
