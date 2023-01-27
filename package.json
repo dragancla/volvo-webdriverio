@@ -12,7 +12,9 @@
   "private": true,
   "scripts": {
     "test": "npx wdio run ./local.conf.js",
-    "test:ci": "npx wdio run ./ci.conf.js"
+    "test:ci": "npx wdio run ./ci.conf.js",
+    "test:visual": "npx wdio run ./visual.conf.js --exclude ./test/baseline.visual.js",
+    "test:visual:baseline": "npx wdio run ./visual.conf.js --spec ./test/baseline.visual.js"
   },
   "devDependencies": {
     "@wdio/cli": "^7.25.1",
@@ -21,6 +23,7 @@
     "@wdio/spec-reporter": "^7.25.1",
     "chromedriver": "^106.0.1",
     "wdio-chromedriver-service": "^8.0.0",
+    "wdio-image-comparison-service": "^5.0.2",
     "wdio-timeline-reporter": "^5.1.4"
   }
 }

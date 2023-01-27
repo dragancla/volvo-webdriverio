@@ -1,4 +1,8 @@
 class Navbar {
+  get header() {
+    return '[id="sitenav:topbar"]';
+  }
+
   get menuButton() {
     return $('[id="sitenav-sidenav-toggle"]');
   }

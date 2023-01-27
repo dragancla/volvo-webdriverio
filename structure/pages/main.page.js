@@ -12,6 +12,10 @@ class MainPage {
     return $("[data-autoid=Video-1]");
   }
 
+  get video() {
+    return "[data-autoid=Video-1]";
+  }
+
   get carSafetyLink() {
     return $('[data-autoid="iconCallouts:cta"]');
   }

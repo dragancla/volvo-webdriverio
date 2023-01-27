@@ -119,3 +119,66 @@ Here's a preview of the HTML report this creates:
 ## Documentation
 
 The documentation is written in (this) README.md file. Leveraging markdown we can make a quick, formatted, easy-to-read and easy-to-maintain guide on how to run the tests.
+
+## Optional: Visual regression testing
+
+First, we would need to install the `wdio-image-comparison-service` dependency:
+
+```bash
+npm install --save wdio-image-comparison-service
+```
+
+**Note**: For ARM architecture computers, some more setup is required before being able to install the module:
+
+```bash
+arch -arm64 brew install pkg-config cairo pango libpng jpeg giflib librsvg
+```
+
+Next, we have to create a new file called `visual.conf.js` which would be identical to our main `local.conf.js` file but with a few modifications:
+
+```js
+exports.config = {
+  ...
+  specs: ["./test/**/*.visual.js"],
+  ...
+  services: [
+    "chromedriver",
+    [TimelineService],
+    [
+      "image-comparison",
+      {
+        baselineFolder: join(process.cwd(), "./screenshots/baseline/"),
+        formatImageName: "{tag}-{logName}-{width}x{height}",
+        screenshotPath: join(process.cwd(), "./results"),
+        savePerInstance: true,
+        blockOutStatusBar: true,
+        blockOutToolBar: true,
+      },
+    ],
+  ],
+  ...
+```
+
+This will enable the `image-comparison` service and filter the visual tests differently from e2e tests: they will have the \*.visual.js extension.
+
+Next, we will create [our test](./test/mainPage.visual.js) and our [image baseline generator](./test/baseline.visual.js), which will be identical to the test except that it will:
+
+1. not contain assertions;
+2. use the saving function instead of the checking function;
+3. move the newly created screenshots to the baseline folder.
+
+Obviously, we will hide all the moving parts, like the video and the navbar, from our tests and baseline generator.
+
+Finally, we will add 2 more scripts to the package.json file:
+
+```json
+  "test:visual": "npx wdio run ./visual.conf.js --exclude ./test/baseline.visual.js",
+  "test:visual:baseline": "npx wdio run ./visual.conf.js --spec ./test/baseline.visual.js"
+```
+
+The first command will run all tests except for the baseline generator, which is the exact opposite of the second command.
+
+Success:
+
+- ![Baseline Generator](./screenshots/generator.png)
+- ![Test Result](./screenshots/result.png)
