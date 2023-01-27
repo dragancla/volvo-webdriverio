@@ -1,51 +1,63 @@
 class Navbar {
   get menuButton() {
-    return $('[id=sitenav-sidenav-toggle]')
+    return $('[id="sitenav-sidenav-toggle"]');
   }
 
-  get carsButton() {
-    return $('[data-autoid="nav:topNavCarMenu"]')
+  get menuDrawer() {
+    return $('[data-autoid="nav:sideNavigationDraw"]');
   }
 
   get buyButton() {
-    return $('[aria-controls=links-menu0-content]')
+    return $("[aria-controls=links-menu0-content]");
   }
 
   get ownButton() {
-    return $('[aria-controls=links-menu1-content]')
+    return $("[aria-controls=links-menu1-content]");
   }
 
   get aboutButton() {
-    return $('[aria-controls=links-menu2-content]')
+    return $("[aria-controls=links-menu2-content]");
   }
 
   get exploreButton() {
-    return $('[aria-controls=links-menu3-content]')
+    return $("[aria-controls=links-menu3-content]");
   }
 
   get moreButton() {
-    return $('[aria-controls=links-menu4-content]')
+    return $("[aria-controls=links-menu4-content]");
   }
 
   get menuCloseButton() {
-    return $('[data-autoid="nav:siteNavCloseIcon"]')
+    return $('[data-autoid="nav:siteNavCloseIcon"]');
   }
-  
+
+  get carsButton() {
+    return $('[data-autoid="nav:topNavCarMenu"]');
+  }
+
+  get carsDrawer() {
+    return $('[data-autoid="nav:carMenuDesktop"]');
+  }
+
   get electricCategory() {
-    return $('[aria-controls=site-nav-cars-menu-section-panel-0]')
+    return $("[aria-controls=site-nav-cars-menu-section-panel-0]");
   }
 
   get hibridCategory() {
-    return $('[aria-controls=site-nav-cars-menu-section-panel-1]')
+    return $("[aria-controls=site-nav-cars-menu-section-panel-1]");
   }
 
   get mildCategory() {
-    return $('[aria-controls=site-nav-cars-menu-section-panel-2]')
+    return $("[aria-controls=site-nav-cars-menu-section-panel-2]");
   }
 
   get carsCloseButton() {
-    return $('[data-autoid="nav:carMenuCloseIcon"]')
+    return $('[data-autoid="nav:carMenuCloseIcon"]');
+  }
+
+  get navBackdrop() {
+    return $('[id="Sitenav-backdrop"]');
   }
 }
 
-module.exports = new Navbar()
+module.exports = new Navbar();
