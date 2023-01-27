@@ -120,6 +120,29 @@ Here's a preview of the HTML report this creates:
 
 The documentation is written in (this) README.md file. Leveraging markdown we can make a quick, formatted, easy-to-read and easy-to-maintain guide on how to run the tests.
 
+## Optional: Use K8s solution
+
+In order to set up a Selenium Grid locally we need to run the following commands (assuming you have Docker installed and configured properly):
+
+```bash
+brew install minikube
+brew install helm
+helm repo add docker-selenium https://www.selenium.dev/docker-selenium
+minikube delete
+minikube --memory 4096 --cpus 2 start
+kubectl create ns selenium-grid
+helm install -n selenium-grid selenium-grid docker-selenium/selenium-grid
+minikube service -n selenium-grid --url selenium-hub
+```
+
+**Note**: If you're setting this up on a real k8s cluster, make sure you don't run any of the minikube commands. And try the install (before actual deployment) with the `--dry-run --debug` flags, just to be on the safe side. Otherwise, the last command should tunnel into the minikube cluster and expose the Selenium Grid hub URL.
+
+Now that the Selenium Grid is up and running, all we need is -- you guessed it -- yet another configuration file + package.json command.
+
+The important thing to note about the new [grid.conf.js](./grid.conf.js) file (which we can base off of the previous `ci.conf.js` file) is the removal of the `chromedriver` service and the addition of the `protocol`, `hostname`, `path` and `port` props.
+
+Finally, the `"test:grid": "npx wdio run ./grid.conf.js",` command will be added to the `package.json` file.
+
 ## Optional: Visual regression testing
 
 First, we would need to install the `wdio-image-comparison-service` dependency:

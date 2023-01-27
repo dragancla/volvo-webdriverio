@@ -13,6 +13,7 @@
   "scripts": {
     "test": "npx wdio run ./local.conf.js",
     "test:ci": "npx wdio run ./ci.conf.js",
+    "test:grid": "npx wdio run ./grid.conf.js",
     "test:visual": "npx wdio run ./visual.conf.js --exclude ./test/baseline.visual.js",
     "test:visual:baseline": "npx wdio run ./visual.conf.js --spec ./test/baseline.visual.js"
   },

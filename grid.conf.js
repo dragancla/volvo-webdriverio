@@ -21,6 +21,10 @@ exports.config = {
     },
   ],
   logLevel: "error",
+  protocol: "http",
+  hostname: "127.0.0.1",
+  path: "/wd/hub",
+  port: 4444,
   bail: 0,
   baseUrl: process.env.BASE_URL
     ? process.env.BASE_URL
@@ -29,7 +33,7 @@ exports.config = {
   connectionRetryTimeout: 120000,
   connectionRetryCount: 3,
   framework: "mocha",
-  services: ["chromedriver", [TimelineService]],
+  services: [[TimelineService]],
   reporters: [
     "spec",
     [

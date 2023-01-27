@@ -1,7 +1,7 @@
 const { TimelineService } = require("wdio-timeline-reporter/timeline-service");
 
 exports.config = {
-  specs: ["./test/**/*.js"],
+  specs: ["./test/**/*.e2e.js"],
   exclude: [],
   maxInstances: 10,
   capabilities: [
